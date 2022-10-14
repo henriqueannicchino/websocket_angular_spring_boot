@@ -1,7 +1,7 @@
 
 <div class="send-button">
-  <div class="send" (click)="connected(input.value)"></div>
-  <input id="input" type="text" #input>
+  <div class="send" (click)="connected()"></div>
+  <input [(ngModel)]="message" id="input" type="text" #input>
 </div>
 
 
@@ -14,12 +14,5 @@
     <div class="chat">
       <div class="message"></div>
     </div>
-  </div>
-</div>
-
-<div class="footer">
-  <div class="send-button">
-    <div class="send" (click)="sendMessage(input.value)"></div>
-    <input  id="input" type="text" #input>
   </div>
 </div>
