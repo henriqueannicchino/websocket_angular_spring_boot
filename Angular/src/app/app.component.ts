@@ -31,6 +31,7 @@ export class AppComponent {
       
       that.stompClient.subscribe(`/user/${this.sessionIdWebsocket}/private`, (frame) => {
         console.log(frame);
+        console.log(JSON.parse(frame.body));
       });
       that.sendMessage();
     });
