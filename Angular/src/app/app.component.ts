@@ -9,12 +9,14 @@ import $ from 'jquery';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  private serverUrl = 'http://192.168.0.91:8080/socket-endpoint'
+  private serverUrl = 'http://192.168.1.2:8080/socket-endpoint'
   
-  title = 'WebSockets chat';
+  title = 'WebSocket';
   sessionIdWebsocket: string = '';
   message: string = '';
   private stompClient;
+  displayModal: boolean;
+  paymentStatus: string = 'LOADING';
 
   constructor() {}
 
@@ -30,11 +32,20 @@ export class AppComponent {
       this.sessionIdWebsocket = url.split("/")[5];
       
       that.stompClient.subscribe(`/user/${this.sessionIdWebsocket}/private`, (frame) => {
-        console.log(frame);
+        //console.log(frame);
         console.log(JSON.parse(frame.body));
+        if(frame.body) {
+          that.changeStatusValue(JSON.parse(frame.body));
+        }
       });
       that.sendMessage();
     });
+  }
+
+  changeStatusValue(msg) {
+    if(msg.status !== undefined){
+      this.paymentStatus = msg.status;
+    }
   }
 
   disconnectar(){
@@ -43,8 +54,12 @@ export class AppComponent {
   }
 
   sendMessage() {
-    console.log(this.message, this.sessionIdWebsocket)
     this.stompClient.send(`/app/private-message`, {}, JSON.stringify({numeroPedido: this.message}));
     //$('#input').val('');
+  }
+
+  showModal() {
+    this.connected();
+    this.displayModal = true;
   }
 }

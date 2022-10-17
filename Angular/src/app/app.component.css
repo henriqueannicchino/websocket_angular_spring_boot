@@ -1,41 +1,78 @@
 .chat-container{
-    height: 80vh;
-    width: 100vw;
-  }
-  .chat{
-    text-align: left;
-    margin: 0 auto;
-    width: 50%;
-    height: 100%;
-    border: 1px solid grey;
-  }
-  
-  .footer{
-    background: #cccccc;
-    margin: 0 auto;
-    position: absolute;
-    bottom: 0;
-    height: 10vh;
-    width: 100vw;
-  }
-  .send-button{
-    margin: 0 auto;
-    height: 70%;
-    width: 50%;
-  }
-  input{
-    float: right;
-    height: 30px;
-    border-radius: 15px;
-    font-size: 1.5em;
-  }
-  .send{
-    float: right;
-    background: url("../assets/images/send.png");
-    background-size: contain;
-    background-repeat: no-repeat;
-    height: 30px;
-    width: 30px;
-    margin-left: 5px;
-  
-  }
+  height: 80vh;
+  width: 100vw;
+}
+.chat{
+  text-align: left;
+  margin: 0 auto;
+  width: 50%;
+  height: 100%;
+  border: 1px solid grey;
+}
+
+.footer{
+  background: #cccccc;
+  margin: 0 auto;
+  position: absolute;
+  bottom: 0;
+  height: 10vh;
+  width: 100vw;
+}
+.send-button{
+  margin: 0 auto;
+  height: 70%;
+  width: 50%;
+}
+input{
+  float: right;
+  height: 30px;
+  border-radius: 15px;
+  font-size: 1.5em;
+}
+.send{
+  float: right;
+  background: url("../assets/images/send.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 30px;
+  width: 30px;
+  margin-left: 5px;
+
+}
+
+:host ::ng-deep .p-dialog .p-dialog-header{
+  background: #c1c1c1;
+}
+
+:host ::ng-deep .p-dialog{
+  shadow: #c1c1c1;
+}
+
+.button {
+  color: #ffffff;
+  background: #3B82F6;
+  border: 1px solid #3B82F6;
+  padding: 0.75rem 1.25rem;
+  font-size: 1rem;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #326fd1;
+}
+
+.buttonModal {
+  background-color: transparent;
+  color: #3B82F6;
+  border-color: transparent;
+  padding: 0.40rem 0.65rem;
+  font-weight: 700;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.buttonModal:hover {
+  background-color: rgba(59, 130, 246, 0.1);
+}
