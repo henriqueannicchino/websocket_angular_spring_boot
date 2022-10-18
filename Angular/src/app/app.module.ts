@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { DialogModule } from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { QRCodeModule } from 'angularx-qrcode';
 
 import { AppComponent } from './app.component';
 
@@ -17,6 +18,7 @@ import { AppComponent } from './app.component';
     DialogModule,
     ButtonModule,
     BrowserAnimationsModule,
+    QRCodeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

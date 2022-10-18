@@ -16,10 +16,16 @@
     [breakpoints]="{'960px': '75vw'}" 
     [style]="{width: '50vw', border: '1px solid #000', borderRadius: '6px', boxShadow: '5px 5px 10px 0px rgba(0, 0, 0, 0.5)'}" 
     [draggable]="false" 
-    [resizable]="false">  
-    <p>Pago: {{paymentStatus}}</p>
-          <ng-template pTemplate="footer">
-            <button (click)="displayModal=false" class="buttonModal">Close</button>
-          </ng-template>
+    [resizable]="false">
+    <div [ngStyle]="{display: 'flex'}">
+      <div>
+        <qrcode [qrdata]="qrdata" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
+        <p>{{timeLeft}} Segundos restantes</p> 
+      </div>
+      <p>Status: {{paymentStatus}}</p>
+    </div>
+    <ng-template pTemplate="footer">
+      <button (click)="displayModal=false" class="buttonModal">Close</button>
+    </ng-template>
   </p-dialog>
 </div>

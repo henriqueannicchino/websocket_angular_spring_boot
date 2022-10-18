@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import * as Stomp from 'stompjs';
 import * as SockJS from 'sockjs-client';
-import $ from 'jquery';
+//import $ from 'jquery';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +9,7 @@ import $ from 'jquery';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  private serverUrl = 'http://192.168.1.2:8080/socket-endpoint'
+  private serverUrl = 'http://192.168.0.91:8080/socket-endpoint'
   
   title = 'WebSocket';
   sessionIdWebsocket: string = '';
@@ -17,6 +17,9 @@ export class AppComponent {
   private stompClient;
   displayModal: boolean;
   paymentStatus: string = 'LOADING';
+  timeLeft: number = 8;
+  interval;
+  qrdata = "who are you? I'm a machine!";
 
   constructor() {}
 
@@ -60,6 +63,19 @@ export class AppComponent {
 
   showModal() {
     this.connected();
+    this.startTimer();
     this.displayModal = true;
+  }
+
+  startTimer() {
+    this.interval = setInterval(() => {
+      if(this.timeLeft > 0) {
+        this.timeLeft--;
+      } else {
+        if(this.paymentStatus !== "CONCLUIDA")
+          this.paymentStatus = "EXPIRADO";
+        this.timeLeft = 0;
+      }
+    },1000)
   }
 }
