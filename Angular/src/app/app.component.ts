@@ -9,7 +9,7 @@ import * as SockJS from 'sockjs-client';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  private serverUrl = 'http://192.168.0.91:8080/socket-endpoint'
+  private serverUrl = 'http://192.168.0.73:8080/websocket'
   
   title = 'WebSocket';
   sessionIdWebsocket: string = '';
@@ -29,7 +29,7 @@ export class AppComponent {
     console.log("Conexão criada")
     this.stompClient = Stomp.over(ws);
     let that = this;
-    this.stompClient.connect({}, function(frame) {
+    this.stompClient.connect({'authorization': 'bearer 8ui32jdbeudf3g18d'}, function(frame) {
       
       var url = ws._transport.url;
       this.sessionIdWebsocket = url.split("/")[5];
